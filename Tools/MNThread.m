@@ -34,13 +34,17 @@
     if (self) {
         
         __weak typeof(self) weakSelf = self;
-        self.thread = [[NSThread alloc] initWithBlock:^{
-            [[NSRunLoop currentRunLoop] addPort:[[NSPort alloc] init] forMode:NSDefaultRunLoopMode];
-            
-            while (weakSelf  && !weakSelf.isStoped) {
-                [[NSRunLoop currentRunLoop]  runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-            }
-        }];
+        if (@available(iOS 10.0, *)) {
+            self.thread = [[NSThread alloc] initWithBlock:^{
+                [[NSRunLoop currentRunLoop] addPort:[[NSPort alloc] init] forMode:NSDefaultRunLoopMode];
+                
+                while (weakSelf  && !weakSelf.isStoped) {
+                    [[NSRunLoop currentRunLoop]  runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+                }
+            }];
+        } else {
+            // Fallback on earlier versions
+        }
         [self.thread start];
         
     }
