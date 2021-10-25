@@ -30,7 +30,7 @@ typedef enum : NSUInteger {
 
 
 /// 给图片加水印
-/// @param waterImage 水印图片(可以是图片，也可以是url)
+/// @param waterImageSource 水印图片(可以是图片，也可以是url)
 /// @param location 水印位置 默认左上角
 /// @param waterSize 水印相对应原图的比例 0～1之间
 - (UIImage *)addWatermarkWithWaterImageSource:(id)waterImageSource

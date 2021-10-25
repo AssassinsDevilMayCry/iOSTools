@@ -12,5 +12,6 @@
 #import "MNTimer.h"
 #import "UIImage+Watermark.h"
 #import "HandwrittenView.h"
+#import "UIScrollView+sets.h"
 
 #endif /* MNTools_h */

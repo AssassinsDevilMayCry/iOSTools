@@ -45,7 +45,8 @@ static dispatch_semaphore_t semaphore_;
     //线程加锁
     dispatch_semaphore_wait(semaphore_, DISPATCH_TIME_FOREVER);
     //定时器的唯一标识
-    NSString *name = [NSString stringWithFormat:@"%@",@(timers_.count)];
+//    NSString *name = [NSString stringWithFormat:@"%@",@(timers_.count)];
+    NSString *name = [[NSUUID UUID] UUIDString];
     //存放到字典中
     timers_[name] = timer;
     //线程加锁
